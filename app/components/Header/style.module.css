@@ -1,0 +1,199 @@
+.header {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 20px 50px;
+    margin: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+  }
+  
+  .header img {
+    height: 40px;
+    left: 50px;
+    position: absolute;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .nav.mobileActive {
+    display: flex !important;
+  }
+  
+  .hamburger {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  .hamburger:hover span {
+    background-color: #ddd;
+  }
+  
+  .link {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #8c8c8c;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: -4%;
+    margin: 0 40px;
+    padding: 0;
+    text-decoration: none;
+  }
+  
+  .linkActive {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: -4%;
+    margin: 0 40px;
+    padding: 0;
+    text-decoration: none;
+  }
+  
+  .sigin {
+    font-family: 'Josefin Sans', sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 50px;
+    margin-right: 40px;
+    color: #9c9c9c;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: -4%;
+    cursor: pointer;
+  }
+  
+  .siginActive {
+    font-family: 'Josefin Sans', sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 50px;
+    margin-right: 40px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: -4%;
+    cursor: pointer;
+  }
+  
+  .logo {
+    width: 90px;
+    height: 30px;
+    object-fit: contain;
+    margin-left: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: row;
+      padding: 15px 20px;
+    }
+  
+    .nav {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(26, 25, 25, 0.3);
+        backdrop-filter: blur(10px);
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 50%;
+        justify-content: flex-start;
+        align-items: center;
+        z-index: 999;
+        transform: translateX(100%); 
+        transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+        border-radius: 20px;
+        opacity: 0; 
+        pointer-events: none;
+      }
+      
+      .nav.mobileActive {
+        transform: translateX(0); 
+        opacity: 1; 
+        pointer-events: auto; 
+      }
+      
+      .nav.mobileNotActive {
+        transform: translateX(100%); 
+        opacity: 0; 
+        pointer-events: none;
+      }
+      
+  
+    .hamburger {
+      display: block;
+    }
+
+      .link {
+        color: #696969;
+        margin: 15px 0;
+      }
+      .linkActive {
+        color: #fff;
+        margin: 15px 0;
+      }
+    
+      .sigin{
+        position: relative;
+        right: 0;
+        margin: 15px 0;
+        text-align: center;
+        color: #696969;
+      }
+
+      .siginActive {
+        position: relative;
+        right: 0;
+        margin: 15px 0;
+        text-align: center;
+        color: #fff;
+      }
+  
+    .logo {
+      left: 20px;
+      height: 30px;
+    }
+  }
+  

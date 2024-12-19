@@ -30,11 +30,11 @@ const Login = () => {
     }
   };
 
-  let PasswordTypeHiding = () => {
+  const PasswordTypeHiding = () => {
     setPasswordVisible(true);
   }
 
-  let PasswordTypeOpen = () => {
+  const PasswordTypeOpen = () => {
     setPasswordVisible(false);
   }
 

@@ -35,8 +35,8 @@ const ToDoList = () => {
     } else {
       setShowAlert(false);
 
-      let updateAchievements = [achievement, ...achievements];
-      let updateDoneStatus = [false, ...doneStatus];
+      const updateAchievements = [achievement, ...achievements];
+      const updateDoneStatus = [false, ...doneStatus];
 
       setAchievements(updateAchievements);
       setDoneStatus(updateDoneStatus);
@@ -92,7 +92,7 @@ const ToDoList = () => {
       type: "TASK",
       item: { index },
     });
-
+  
     const [, drop] = useDrop({
       accept: "TASK",
       hover: (item: { index: number }) => {
@@ -102,15 +102,20 @@ const ToDoList = () => {
         }
       },
     });
-
+  
+    const combinedRef = (node: HTMLDivElement | null) => {
+      drag(node);
+      drop(node);
+    };
+  
     return (
       <div
-        ref={(node) => drag(drop(node))}
+        ref={combinedRef}
         key={index}
         className={doneStatus[index] ? style.taskItemDone : style.taskItem}
       >
         <p className={style.task}>{task}</p>
-        {doneStatus[index] ?
+        {doneStatus[index] ? (
           <div className={style.buttons}>
             <img
               onClick={() => handleDelete(index)}
@@ -118,23 +123,24 @@ const ToDoList = () => {
               className={style.deleteButton}
             />
           </div>
-        :
-        <div className={style.buttons}>
-          <img
-            onClick={() => handleDoneClick(index)}
-            src="/assets/icons/done.png"
-            className={style.buttonDone}
-          />
-          <img
-            onClick={() => handleDelete(index)}
-            src="/assets/icons/finish.png"
-            className={style.deleteButton}
-          />
-        </div>
-        }
+        ) : (
+          <div className={style.buttons}>
+            <img
+              onClick={() => handleDoneClick(index)}
+              src="/assets/icons/done.png"
+              className={style.buttonDone}
+            />
+            <img
+              onClick={() => handleDelete(index)}
+              src="/assets/icons/finish.png"
+              className={style.deleteButton}
+            />
+          </div>
+        )}
       </div>
     );
   };
+  
 
   return (
     <div className={style.MainBlock}>
